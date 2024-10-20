@@ -1,0 +1,9 @@
+FROM hub.atomgit.com/library/node:20-buster-slim
+
+WORKDIR "/usr/app"
+
+COPY ./package.json ./
+RUN npm install
+
+COPY . .
+CMD ["npm", "run", "start"]
