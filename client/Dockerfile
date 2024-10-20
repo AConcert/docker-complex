@@ -1,13 +1,14 @@
-FROM hub.atomgit.com/library/node:20-buster-slim as builder
+FROM node:22-alpine3.19 as builder
 
 WORKDIR '/usr/app'
 
 COPY ./package.json ./
 RUN npm install
+
 COPY . .
 RUN npm run build
 
-FROM hub.atomgit.com/library/nginx:1.25.2-alpine
+FROM nginx:1.27-alpine
 EXPOSE 3000
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /usr/app/build /usr/share/nginx/html
