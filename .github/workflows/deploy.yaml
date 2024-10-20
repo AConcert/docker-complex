@@ -18,7 +18,7 @@ jobs:
       - run: docker build -t claire/multi-server ./server
       - run: docker build -t claire/multi-worker ./worker
 
-      - run: docker push rallycoding/multi-client
-      - run: docker push rallycoding/multi-nginx
-      - run: docker push rallycoding/multi-server
-      - run: docker push rallycoding/multi-worker
+      - run: docker push claire/multi-client
+      - run: docker push claire/multi-nginx
+      - run: docker push claire/multi-server
+      - run: docker push claire/multi-worker
