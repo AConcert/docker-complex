@@ -26,3 +26,15 @@ jobs:
       - run: docker push 1625191507/multi-nginx
       - run: docker push 1625191507/multi-server
       - run: docker push 1625191507/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: Multi-docker-env
+  bucket_name: elasticbeanstalk-us-east-1-423623837621
+  bucket_path: docker-multi
+  on:
+    branch: main
+  access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+  secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
