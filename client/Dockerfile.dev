@@ -1,4 +1,4 @@
-FROM hub.atomgit.com/library/node:20-buster-slim
+FROM hub.atomgit.com/library/node:20-buster-slim as builder
 
 WORKDIR '/usr/app'
 
